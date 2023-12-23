@@ -8,7 +8,6 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import Alamofire
 
 final class ViewModel {
     
@@ -16,17 +15,27 @@ final class ViewModel {
     
     private let postsSubject: PublishSubject<[PostDTO]>
     
-    private lazy var usecase = UseCase(postsSubject: postsSubject)
+    private let usecase = UseCase()
     
     init(postsSubject: PublishSubject<[PostDTO]>) {
         self.postsSubject = postsSubject
     }
     
     func transform(input: ViewModel.Input) -> ViewModel.Output {
-        
         input.viewReactButtonTap
             .bind { [weak self] _ in
-                self?.usecase.start()
+                guard let self = self else { return }
+                
+                self.usecase.start()
+                    .subscribe(
+                        onNext: { posts in
+                            self.postsSubject.onNext(posts)
+                        },
+                        onError: { error in
+                            dump(error)
+                        }
+                    )
+                    .disposed(by: self.disposableBag)
             }
             .disposed(by: disposableBag)
         

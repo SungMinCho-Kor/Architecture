@@ -10,17 +10,28 @@ import RxSwift
 
 final class UseCase {
     
-    private let postsSubject: PublishSubject<[PostDTO]>
-    private let repository: Repository
     private let disposableBag = DisposeBag()
+    private let repository = Repository()
     
-    init(postsSubject: PublishSubject<[PostDTO]>) {
-        self.postsSubject = postsSubject
-        self.repository = Repository(postsSubject: postsSubject)
-    }
-    
-    func start(){
-        repository.react()
+    func start() -> Observable<[PostDTO]> {
+        
+        return Observable<[PostDTO]>.create { [weak self] emitter in
+            guard let self = self else { return Disposables.create() }
+            
+            self.repository.fetchPosts().subscribe { data in
+                do {
+                    let decoder = JSONDecoder()
+                    let posts = try decoder.decode([PostDTO].self, from: data)
+                    emitter.onNext(posts)
+                } catch let error {
+                    dump(error)
+                }
+            }
+            .disposed(by: self.disposableBag)
+            
+            
+            return Disposables.create()
+        }
     }
     
 }

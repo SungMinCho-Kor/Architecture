@@ -16,6 +16,7 @@
 		59EA94C72B36B181007EAA42 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EA94C62B36B181007EAA42 /* Repository.swift */; };
 		59EA94C92B36B189007EAA42 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EA94C82B36B189007EAA42 /* UseCase.swift */; };
 		59EA94CB2B36F3CE007EAA42 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EA94CA2B36F3CE007EAA42 /* PostDTO.swift */; };
+		59EA94CD2B37425C007EAA42 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EA94CC2B37425C007EAA42 /* Constant.swift */; };
 		953A3579F5AE4667DAD06E9F /* Pods_PracticeMVVM_CleanArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5866899DFF645B4709B70D /* Pods_PracticeMVVM_CleanArchitecture.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		59EA94C62B36B181007EAA42 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		59EA94C82B36B189007EAA42 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		59EA94CA2B36F3CE007EAA42 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
+		59EA94CC2B37425C007EAA42 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		8F5866899DFF645B4709B70D /* Pods_PracticeMVVM_CleanArchitecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PracticeMVVM_CleanArchitecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C71C73FC44C79A208F3F6AFA /* Pods-PracticeMVVM-CleanArchitecture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeMVVM-CleanArchitecture.debug.xcconfig"; path = "Target Support Files/Pods-PracticeMVVM-CleanArchitecture/Pods-PracticeMVVM-CleanArchitecture.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +81,7 @@
 				598BA1B82B34212A00A950AF /* LaunchScreen.storyboard */,
 				598BA1BB2B34212A00A950AF /* Info.plist */,
 				59EA94CA2B36F3CE007EAA42 /* PostDTO.swift */,
+				59EA94CC2B37425C007EAA42 /* Constant.swift */,
 			);
 			path = "PracticeMVVM-CleanArchitecture";
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			files = (
 				598BA1B22B34212900A950AF /* ViewController.swift in Sources */,
 				598BA1AE2B34212900A950AF /* AppDelegate.swift in Sources */,
+				59EA94CD2B37425C007EAA42 /* Constant.swift in Sources */,
 				59EA94C72B36B181007EAA42 /* Repository.swift in Sources */,
 				59EA94C92B36B189007EAA42 /* UseCase.swift in Sources */,
 				59EA94B92B3431C9007EAA42 /* ViewModel.swift in Sources */,

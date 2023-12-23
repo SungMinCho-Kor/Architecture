@@ -11,37 +11,30 @@ import RxSwift
 
 final class Repository {
     
-    private let postsSubject: PublishSubject<[PostDTO]>
-    
-    init(postsSubject: PublishSubject<[PostDTO]>) {
-        self.postsSubject = postsSubject
-    }
-    
-    func react(){
-        let url = "https://jsonplaceholder.typicode.com/posts"
+    func fetchPosts() -> Observable<Data> {
         
-        AF.request(url,
-                   method: .get,
-                   encoding: JSONEncoding(),
-                   headers: [
-                    "Accept": "application/vnd.github+json"
-                   ]
-        )
-        .response { [weak self] response in
-            switch response.result {
-            case .success(let data):
-                do {
+        return Observable<Data>.create { emitter in
+            let url = "https://jsonplaceholder.typicode.com/posts"
+            
+            AF.request(url,
+                       method: .get,
+                       encoding: JSONEncoding(),
+                       headers: [
+                        "Accept": "application/json"
+                       ]
+            )
+            .response {response in
+                switch response.result {
+                case .success(let data):
                     guard let data = data else { return }
-                    let decoder = JSONDecoder()
-                    let posts = try decoder.decode([PostDTO].self, from: data)
-                    self?.postsSubject.onNext(posts)
-                } catch let error {
+                    emitter.onNext(data)
+                    break
+                case .failure(let error):
                     print(error.localizedDescription)
                 }
-                break
-            case .failure(let error):
-                print(error.localizedDescription)
             }
+            
+            return Disposables.create() // TODO: 이해가 안 되네요
         }
     }
     

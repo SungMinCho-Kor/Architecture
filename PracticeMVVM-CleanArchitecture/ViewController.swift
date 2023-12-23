@@ -68,11 +68,14 @@ final class ViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         output.postsOutput
-            .subscribe { posts in
-                dump(posts)
+            .subscribe { [weak self] posts in
+                self?.updateView(posts: posts)
             }
             .disposed(by: disposableBag)
-        
+    }
+    
+    func updateView(posts: [PostDTO]) {
+        dump(posts)
     }
     
 }
