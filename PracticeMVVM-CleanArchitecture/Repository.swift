@@ -14,7 +14,7 @@ final class Repository {
     func fetchPosts() -> Observable<Data> {
         
         return Observable<Data>.create { emitter in
-            let url = "https://jsonplaceholder.typicode.com/posts"
+            let url = Constant.baseURL + "/posts"
             
             AF.request(url,
                        method: .get,
